@@ -8,11 +8,14 @@
                 <div class="form-group">
                     <input class="form-control" type="text" value="<%= campground.name %>" name="campground[name]">
                 </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" value="<%= campground.price %>" name="campground[price]" step="0.01">
+                </div>
             	<div class="form-group">
                     <input class="form-control" type="text" value="<%= campground.image %>" name="campground[image]">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" value="<%= campground.desc %>" name="campground[description]">
+                    <input class="form-control" type="text" value="<%= campground.desc %>" name="campground[desc]">
                 </div>
             	<div class="form-group">
                     <button class="btn btn-primary btn-lg btn-block">Submit</button>
