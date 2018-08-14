@@ -27,6 +27,7 @@ router.post('/campgrounds', middleware.isLoggedIn, function(req, res) {
     var campPrice = req.body.price;
     var campImage = req.body.image;
     var campDesc = req.body.description;
+    
     var author = {
         id: req.user._id,
         username: req.user.username
