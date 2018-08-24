@@ -3,6 +3,7 @@ router = express.Router({mergeParams: true}),
 Comment = require("../models/comment"),
 middleware = require("../middleware"),
 Campground = require("../models/campground");
+moment = require("moment");
 
 
 // NEW COMMENT ROUTE
@@ -31,6 +32,7 @@ router.post("/campgrounds/:id/comments", middleware.isLoggedIn, function(req, re
                     // Associating author(user) to (his) comment
                     comment.author.id = req.user.id;
                     comment.author.username = req.user.username;
+                    comment.createdOn = moment();
                     comment.save();
                     // link to camp
                     campground.comments.push(comment);
