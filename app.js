@@ -50,6 +50,6 @@ app.use(indexRoutes);
 app.use(campgroundRoutes);
 app.use(commentRoutes);
 
-app.listen(8080, function() {
-    console.log('Server Started!!');
+app.listen(process.env.PORT, process.env.IP, function() {
+    console.log('Server Started!!!');
 });
