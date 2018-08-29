@@ -2,7 +2,6 @@ var mongoose = require("mongoose");
 
 var commentSchema = mongoose.Schema({
     text: String,
-    createdOn: Object,
     author:{
         id: {
             type: mongoose.Schema.Types.ObjectId,

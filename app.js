@@ -9,7 +9,6 @@ var Campground      = require("./models/campground"),
     mongoose        = require("mongoose"),
     express         = require("express"), 
     seedDB          = require("./seeds"),
-    moment          = require("moment"),
     app             = express();
     
 var commentRoutes = require("./routes/comment"),
@@ -44,7 +43,6 @@ app.use(function(req, res, next) {
     res.locals.currentUser = req.user;
     res.locals.error = req.flash("error");
     res.locals.success = req.flash("success");
-    res.locals.moment = moment;
     next();
 });
 
