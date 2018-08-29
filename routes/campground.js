@@ -1,7 +1,7 @@
-var express = require("express"), 
-router = express.Router(),
-middleware = require("../middleware"),
-Campground = require("../models/campground");
+var Campground  = require("../models/campground");
+    middleware  = require("../middleware"),
+    express     = require("express"), 
+    router      = express.Router(),
 
 // SHOW ALL CAMPGROUNDS
 router.get("/campgrounds", function(req, res) {
@@ -23,21 +23,17 @@ router.get('/campgrounds/new', middleware.isLoggedIn, function(req, res) {
 // CREATE CAMPGROUND ROUTE
 router.post('/campgrounds', middleware.isLoggedIn, function(req, res) {
     // get new camp details from *form*
-    var campName = req.body.name;
-    var campPrice = req.body.price;
-    var campImage = req.body.image;
-    var campDesc = req.body.description;
-    var author = {
+    var newCamp = req.body.camp;
+    newCamp.author = {
         id: req.user._id,
         username: req.user.username
     };
-    var newCampground = {name: campName, price: campPrice, image: campImage, desc: campDesc, author};
-    Campground.create(newCampground, function(err, campground) {
+    Campground.create(newCamp, function(err, campground) {
         if(err){
         console.log("Error");
         }
         else {
-            console.log("Campground created!!");
+            req.flash('success', 'Campground successfully created!');
             // Redirect to campgrounds page
             res.redirect('/campgrounds');
         }
