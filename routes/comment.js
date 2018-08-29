@@ -23,14 +23,20 @@ router.post("/campgrounds/:id/comments", middleware.isLoggedIn, function(req, re
         if(err) {
             console.log(err);
         } else {
+            // Add an 'author' object to 'comment' object
+            req.body.comment.author = {
+                id: req.user.id,
+                username: req.user.username
+            };
             // Create Comment
             Comment.create(req.body.comment, function(err, comment) {
                 if(err) {
                     console.log(err);
                 } else {
                     // Associating author(user) to (his) comment
-                    comment.author.id = req.user.id;
-                    comment.author.username = req.user.username;
+                    // comment.author.id = req.user.id;
+                    // comment.author.username = req.user.username;
+                    comment.createdAt = Date();
                     comment.save();
                     // link to camp
                     campground.comments.push(comment);
