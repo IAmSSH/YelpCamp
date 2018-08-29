@@ -2,7 +2,7 @@ var express = require("express"),
 router = express.Router({mergeParams: true}),
 Comment = require("../models/comment"),
 middleware = require("../middleware"),
-Campground = require("../models/campground");
+Campground = require("../models/campground"),
 moment = require("moment");
 
 
@@ -35,15 +35,9 @@ router.post("/campgrounds/:id/comments", middleware.isLoggedIn, function(req, re
                     console.log(err);
                 } else {
                     // Associating author(user) to (his) comment
-<<<<<<< HEAD
-                    // comment.author.id = req.user.id;
-                    // comment.author.username = req.user.username;
-                    comment.createdAt = Date();
-=======
                     comment.author.id = req.user.id;
                     comment.author.username = req.user.username;
                     comment.createdOn = moment();
->>>>>>> 196396fcb6df2cd1c9ef6dff8fef2e3fbb0851fc
                     comment.save();
                     // link to camp
                     campground.comments.push(comment);
