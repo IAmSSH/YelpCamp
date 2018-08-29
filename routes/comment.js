@@ -2,14 +2,7 @@ var express = require("express"),
 router = express.Router({mergeParams: true}),
 Comment = require("../models/comment"),
 middleware = require("../middleware"),
-<<<<<<< HEAD
-Campground = require("../models/campground"),
-moment = require("moment");
-=======
-moment = require("moment"),
 Campground = require("../models/campground");
->>>>>>> parent of b3e590f... revert back to 08b7fae0d364a37fd5f26b335ed2cf3d778ca397
-
 
 // NEW COMMENT ROUTE
 router.get("/campgrounds/:id/comments/new", middleware.isLoggedIn, function(req, res) {
