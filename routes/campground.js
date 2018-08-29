@@ -18,8 +18,17 @@ router.get("/campgrounds", function(req, res) {
 // CREATE CAMPGROUND ROUTE
 router.post('/campgrounds', middleware.isLoggedIn, function(req, res) {
     // get new camp details from *form*
+<<<<<<< HEAD
     var newCamp = req.body.camp;
     newCamp.author = {
+=======
+    var campName = req.body.name;
+    var campPrice = req.body.price;
+    var campImage = req.body.image;
+    var campDesc = req.body.description;
+    
+    var author = {
+>>>>>>> parent of b3e590f... revert back to 08b7fae0d364a37fd5f26b335ed2cf3d778ca397
         id: req.user._id,
         username: req.user.username
     };

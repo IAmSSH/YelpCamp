@@ -2,8 +2,13 @@ var express = require("express"),
 router = express.Router({mergeParams: true}),
 Comment = require("../models/comment"),
 middleware = require("../middleware"),
+<<<<<<< HEAD
 Campground = require("../models/campground"),
 moment = require("moment");
+=======
+moment = require("moment"),
+Campground = require("../models/campground");
+>>>>>>> parent of b3e590f... revert back to 08b7fae0d364a37fd5f26b335ed2cf3d778ca397
 
 
 // NEW COMMENT ROUTE
@@ -37,6 +42,7 @@ router.post("/campgrounds/:id/comments", middleware.isLoggedIn, function(req, re
                     // Associating author(user) to (his) comment
                     comment.author.id = req.user.id;
                     comment.author.username = req.user.username;
+                    // comment.dateCreated = moment().fromNow();
                     comment.save();
                     // link to camp
                     campground.comments.push(comment);
