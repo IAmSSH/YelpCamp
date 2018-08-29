@@ -16,14 +16,9 @@ var commentRoutes = require("./routes/comment"),
     indexRoutes = require("./routes/index"),
     campgroundRoutes = require("./routes/campground");
     
-<<<<<<< HEAD
+// mongoose.connect('mongodb://localhost:27017/yelp_camp', { useNewUrlParser: true });
+mongoose.connect('mongodb://admin:hello1@ds247121.mlab.com:47121/yelpcamp', { useNewUrlParser: true });
 
-mongoose.connect('mongodb://localhost:27017/yelp_camp', { useNewUrlParser: true });
-// mongoose.connect('mongodb://admin:hello1@ds247121.mlab.com:47121/yelpcamp', { useNewUrlParser: true });
-=======
-mongoose.connect('mongodb://localhost:27017/yelp_camp', { useNewUrlParser: true });
-//mongoose.connect('mongodb://admin:hello1@ds247121.mlab.com:47121/yelpcamp', { useNewUrlParser: true });
->>>>>>> 196396fcb6df2cd1c9ef6dff8fef2e3fbb0851fc
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
