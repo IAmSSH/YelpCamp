@@ -1,30 +1,34 @@
-var express         = require("express"), 
-    app             = express(),
-    bodyParser      = require('body-parser'),
-    mongoose        = require("mongoose"),
-    methodOverride  = require("method-override"),
-    Campground      = require("./models/campground"),
+var Campground      = require("./models/campground"),
     Comment         = require("./models/comment"),
-    flash           = require("connect-flash"),
-    passport        = require("passport"),
+    methodOverride  = require("method-override"),
     LocalStrategy   = require("passport-local"),
     User            = require("./models/user"),
-    seedDB          = require("./seeds");
+    flash           = require("connect-flash"),
+    bodyParser      = require('body-parser'),
+    passport        = require("passport"),
+    mongoose        = require("mongoose"),
+    express         = require("express"), 
+    seedDB          = require("./seeds"),
+    moment          = require("moment"),
+    app             = express();
     
 var commentRoutes = require("./routes/comment"),
     indexRoutes = require("./routes/index"),
     campgroundRoutes = require("./routes/campground");
     
+<<<<<<< HEAD
 
 mongoose.connect('mongodb://localhost:27017/yelp_camp', { useNewUrlParser: true });
 // mongoose.connect('mongodb://admin:hello1@ds247121.mlab.com:47121/yelpcamp', { useNewUrlParser: true });
+=======
+mongoose.connect('mongodb://localhost:27017/yelp_camp', { useNewUrlParser: true });
+//mongoose.connect('mongodb://admin:hello1@ds247121.mlab.com:47121/yelpcamp', { useNewUrlParser: true });
+>>>>>>> 196396fcb6df2cd1c9ef6dff8fef2e3fbb0851fc
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 // seedDB();
-
-
 
 app.use(require("express-session")({
     secret: "Ding Dong",
@@ -45,16 +49,14 @@ app.use(function(req, res, next) {
     res.locals.currentUser = req.user;
     res.locals.error = req.flash("error");
     res.locals.success = req.flash("success");
-    res.locals.moment = require("moment");
-    
+    res.locals.moment = moment;
     next();
 });
-
 
 app.use(indexRoutes);
 app.use(campgroundRoutes);
 app.use(commentRoutes);
 
-app.listen(process.env.PORT, process.env.IP, function() {
-    console.log('Server Started!!!');
+app.listen(8080, function() {
+    console.log('Server Started!!');
 });
