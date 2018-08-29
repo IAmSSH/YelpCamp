@@ -2,16 +2,8 @@ var express = require("express"),
 router = express.Router({mergeParams: true}),
 Comment = require("../models/comment"),
 middleware = require("../middleware"),
-<<<<<<< HEAD
-<<<<<<< HEAD
 Campground = require("../models/campground"),
 moment = require("moment");
-=======
-Campground = require("../models/campground");
->>>>>>> parent of dad64c0... add timestamp to comments
-=======
-Campground = require("../models/campground");
->>>>>>> parent of dad64c0... add timestamp to comments
 
 
 // NEW COMMENT ROUTE
